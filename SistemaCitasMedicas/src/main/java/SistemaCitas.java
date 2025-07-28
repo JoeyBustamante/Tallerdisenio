@@ -15,46 +15,56 @@ public class SistemaCitas {
         medicos.add(new Medico(nombre, especialidad));
     }
 
-    public void agendarCita(String cedulaPaciente, String especialidad, LocalDateTime fechaHora) {
+    public String agendarCita(String cedulaPaciente, String especialidad, LocalDateTime fechaHora) {
         Paciente p = buscarPaciente(cedulaPaciente);
         if (p == null) {
-            System.out.println("Paciente no encontrado.");
-            return;
+            return "Paciente no encontrado";
         }
+
         Medico m = medicos.stream()
             .filter(med -> med.getEspecialidad().equalsIgnoreCase(especialidad))
-            .findFirst().orElse(null);
+            .findFirst()
+            .orElse(null);
         if (m == null) {
-            System.out.println("No hay médico disponible.");
-            return;
+            return "No hay médico disponible";
         }
+
         citas.add(new CitaMedica(p, m, fechaHora));
+        return "Cita agendada exitosamente";
     }
 
-    public void solicitarExamen(String cedulaPaciente, String tipoExamen) {
+    public String solicitarExamen(String cedulaPaciente, String tipoExamen) {
         Paciente p = buscarPaciente(cedulaPaciente);
-        if (p != null) {
-            examenes.add(new ExamenLaboratorio(p, tipoExamen));
+        if (p == null) {
+            return "Paciente no encontrado";
         }
+
+        examenes.add(new ExamenLaboratorio(p, tipoExamen));
+        return "Examen solicitado exitosamente";
     }
 
-    public void registrarResultado(String cedulaPaciente, String tipoExamen, String resultado) {
+    public String registrarResultado(String cedulaPaciente, String tipoExamen, String resultado) {
         for (ExamenLaboratorio e : examenes) {
             if (e.toString().contains(cedulaPaciente) && e.toString().contains(tipoExamen)) {
                 e.registrarResultado(resultado);
-                break;
+                return "Resultado registrado";
             }
         }
+        return "Examen no encontrado";
     }
 
-    public void verHistorial(String cedulaPaciente) {
+    public String verHistorial(String cedulaPaciente) {
+        StringBuilder historial = new StringBuilder();
+
         citas.stream()
             .filter(c -> c.getPaciente().getCedula().equals(cedulaPaciente))
-            .forEach(System.out::println);
+            .forEach(c -> historial.append(c.toString()).append("\n"));
 
         examenes.stream()
             .filter(e -> e.toString().contains(cedulaPaciente))
-            .forEach(System.out::println);
+            .forEach(e -> historial.append(e.toString()).append("\n"));
+
+        return historial.toString().isEmpty() ? "Sin historial" : historial.toString();
     }
 
     public Paciente buscarPaciente(String cedula) {
