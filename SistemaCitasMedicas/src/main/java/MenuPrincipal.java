@@ -23,8 +23,14 @@ public class MenuPrincipal {
 
             switch (opcion) {
                 case 1:
+                    String ced="" ;
+                    
+                    while (ced.trim().isEmpty()) {
                     System.out.print("Cédula: ");
-                    String ced = sc.nextLine();
+                    ced = sc.nextLine();
+                    }
+                    
+
                     System.out.print("Nombre: ");
                     String nom = sc.nextLine();
                     System.out.print("Correo: ");
