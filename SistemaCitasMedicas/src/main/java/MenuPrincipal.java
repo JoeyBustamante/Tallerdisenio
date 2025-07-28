@@ -25,10 +25,9 @@ public class MenuPrincipal {
                 case 1:
                     String ced="" ;
                     
-                    while(ced!=""){
-                        System.out.print("Cédula: ");
-                        ced = sc.nextLine();
-
+                    while (ced.trim().isEmpty()) {
+                    System.out.print("Cédula: ");
+                    ced = sc.nextLine();
                     }
                     
 
