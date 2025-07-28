@@ -35,14 +35,15 @@ public class SistemaCitasTest {
     }
 
 
+    
     @Test
     public void solicitarExamenPacienteValidoTest() {
         SistemaCitas sistema = new SistemaCitas();
         sistema.registrarPaciente("123", "Juan", "juan@mail.com");
 
-        boolean agregado = sistema.solicitarExamen("123", "Sangre");
+        String resultado = sistema.solicitarExamen("123", "Sangre");
 
-        assertTrue(agregado);
+        assertEquals("Examen solicitado exitosamente", resultado);
     }
 
     @Test
@@ -52,9 +53,9 @@ public class SistemaCitasTest {
         sistema.registrarPaciente("123", "Ana", "ana@mail.com");
         sistema.solicitarExamen("123", "Orina");
 
-        boolean resultado = sistema.registrarResultado("999", "Orina", "Normal");
+        String resultado = sistema.registrarResultado("999", "Orina", "Normal");
 
-        assertFalse(resultado);
+        assertEquals("Examen no encontrado", resultado);
     }
 
     @Test
@@ -67,11 +68,11 @@ public class SistemaCitasTest {
         sistema.agendarCita("111", "Pediatría", LocalDateTime.now());
         sistema.solicitarExamen("111", "Sangre");
 
-        List<String> historialConDatos = sistema.verHistorial("111");
-        List<String> historialSinDatos = sistema.verHistorial("222");
+        String historialConDatos = sistema.verHistorial("111");
+        String historialSinDatos = sistema.verHistorial("222");
 
-        assertFalse(historialConDatos.isEmpty());
-        assertTrue(historialSinDatos.isEmpty());
+        assertFalse(historialConDatos.equals("Sin historial"));
+        assertEquals("Sin historial", historialSinDatos);
     }
 
 
