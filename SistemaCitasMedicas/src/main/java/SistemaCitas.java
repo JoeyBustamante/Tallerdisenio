@@ -57,7 +57,7 @@ public class SistemaCitas {
             .forEach(System.out::println);
     }
 
-    private Paciente buscarPaciente(String cedula) {
+    public Paciente buscarPaciente(String cedula) {
         return pacientes.stream()
             .filter(p -> p.getCedula().equals(cedula))
             .findFirst().orElse(null);
