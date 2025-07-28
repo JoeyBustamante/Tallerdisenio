@@ -5,7 +5,7 @@ public class MedicoTest {
 
     @Test
     public void testMedicoValido() {
-        Medico m = new Medico("Dra. Pérez", "Cardiología");
+        Medico m = new Medico("Dr. joey", "cardiologia");
         assertEquals("Dra. Pérez", m.getNombre());
         assertEquals("Cardiología", m.getEspecialidad());
     }

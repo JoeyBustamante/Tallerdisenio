@@ -9,8 +9,15 @@ public class ExamenLaboratorio {
         this.resultado = "Pendiente";
     }
 
-    public void registrarResultado(String resultado) {
+    // Cambiar a String para devolver mensaje
+    public String registrarResultado(String resultado) {
         this.resultado = resultado;
+        return "Resultado registrado correctamente";
+    }
+
+    // getter para testear el resultado
+    public String getResultado() {
+        return resultado;
     }
 
     @Override
