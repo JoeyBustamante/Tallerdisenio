@@ -23,8 +23,15 @@ public class MenuPrincipal {
 
             switch (opcion) {
                 case 1:
-                    System.out.print("Cédula: ");
-                    String ced = sc.nextLine();
+                    String ced="" ;
+                    
+                    while(ced!=""){
+                        System.out.print("Cédula: ");
+                        ced = sc.nextLine();
+
+                    }
+                    
+
                     System.out.print("Nombre: ");
                     String nom = sc.nextLine();
                     System.out.print("Correo: ");
