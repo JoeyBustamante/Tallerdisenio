@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.beans.Transient;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class SistemaCitasTest {
     @Test
@@ -14,7 +16,7 @@ public class SistemaCitasTest {
 
         sistema.registrarPaciente("123", "María", "maria@mail.com");
 
-        Paciente resultado = sistema.buscarPaciente("123"); // este método debe estar público
+        Paciente resultado = sistema.buscarPaciente("123");
 
         assertNotNull(resultado);
         assertEquals("María", resultado.getNombre());
