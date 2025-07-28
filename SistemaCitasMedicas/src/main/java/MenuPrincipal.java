@@ -24,12 +24,10 @@ public class MenuPrincipal {
 
             switch (opcion) {
                 case 1:
-                    String ced="" ;
                     
-                    while (ced.trim().isEmpty()) {
                     System.out.print("Cédula: ");
-                    ced = sc.nextLine();
-                    }
+                    String ced = sc.nextLine();
+                
                     
 
                     System.out.print("Nombre: ");
@@ -69,19 +67,6 @@ public class MenuPrincipal {
                     String cedHist = sc.nextLine();
                     sistema.verHistorial(cedHist);
                     break;
-
-
-                case 6: 
-                    String nomb = "";
-                    while(nomb.trim().isEmpty()){
-                        System.out.println("Ingrese el nombre del medico");
-                        String nombMedico = sc.nextLine();
-                        nomb=nombMedico;
-                    }
-                    System.out.println("Ingrese la especialidad");
-                    String especialidad =  sc.nextLine();
-                    break;
-
 
                 case 0:
                     System.out.println("Saliendo del sistema...");
