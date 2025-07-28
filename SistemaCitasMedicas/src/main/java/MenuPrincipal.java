@@ -16,6 +16,7 @@ public class MenuPrincipal {
             System.out.println("3. Solicitar examen de laboratorio");
             System.out.println("4. Registrar resultado de examen");
             System.out.println("5. Ver historial del paciente");
+            System.out.println("6. Crear medico");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             int opcion = sc.nextInt();
@@ -68,6 +69,20 @@ public class MenuPrincipal {
                     String cedHist = sc.nextLine();
                     sistema.verHistorial(cedHist);
                     break;
+
+
+                case 6: 
+                    String nomb = "";
+                    while(nomb.trim().isEmpty()){
+                        System.out.println("Ingrese el nombre del medico");
+                        String nombMedico = sc.nextLine();
+                        nomb=nombMedico;
+                    }
+                    System.out.println("Ingrese la especialidad");
+                    String especialidad =  sc.nextLine();
+                    break;
+
+
                 case 0:
                     System.out.println("Saliendo del sistema...");
                     sc.close();
